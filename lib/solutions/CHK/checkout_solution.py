@@ -1,5 +1,4 @@
 from collections import Counter
-item_counts = Counter(skus)
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -22,6 +21,7 @@ def checkout(skus: str) -> int:
         if c not in prices:
             return -1
     
+    item_counts = Counter(skus)
     total_price = 0
 
     for item, count in item_counts.items():
@@ -29,4 +29,5 @@ def checkout(skus: str) -> int:
         # if item in special_offers:
             
     
+
 
