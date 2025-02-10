@@ -27,7 +27,10 @@ def checkout(skus: str) -> int:
     for item, count in item_counts.items():
         print(item, count)
         # if item in special_offers:
+
+    return item_counts.items()
             
     
+
 
 
