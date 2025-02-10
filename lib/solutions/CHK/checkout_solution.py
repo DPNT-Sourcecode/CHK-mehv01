@@ -34,11 +34,9 @@ def checkout(skus: str) -> int:
     #1: Apply 'Buy X get Y free' offer
     for item, (num_required, free_item) in buy_get_free_offers.items():
         if item in item_counts:
-            free_items_given = item_counts[item]
-            if free_item in item_counts and item_counts[free_item] > 0:
-                item_counts[free_item] -= free_items_given
-                if item_counts[free_item] < 0:
-                    item_counts[free_item] = 0
+            if free_item in item_counts:
+                #reduce amount of items charged for
+                item_counts[free_item] = max(0, item_counts[free_item] - 1)
 
     #2: Process bulk discount, applying special offers first (favouring best discount)
     for item, count in item_counts.items():
@@ -52,6 +50,7 @@ def checkout(skus: str) -> int:
 
     return total_price
             
+
 
 
 

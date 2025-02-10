@@ -25,9 +25,13 @@ class TestCHK():
     
     def test_chk_eebb(self):
         assert checkout_solution.checkout('EEBB') == 110
+    
+    def test_chk_bbeebb(self):
+        assert checkout_solution.checkout('BBEEBB') == 155
 
     def test_chk_err(self):
         assert checkout_solution.checkout('Z') == -1
 
     
+
 
