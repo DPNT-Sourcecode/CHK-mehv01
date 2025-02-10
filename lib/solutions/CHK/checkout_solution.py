@@ -40,7 +40,7 @@ def checkout(skus: str) -> int:
         'B': [(2, 45)],
         'F': [(3, 2*prices['F'])], #Buy 3F for 20 is same as buy 2F get one free
         'H': [(10, 80), (5, 45)],
-        'K': [(2, 150)],
+        'K': [(2, 120)],
         'P': [(5, 200)],
         'Q': [(3, 80)],
         'U': [(4, 3*prices['U'])],
@@ -54,6 +54,9 @@ def checkout(skus: str) -> int:
         'N': (3, 'M'),
         'R': (3, 'Q')
     }
+
+    group_discount_items = {'S', 'T', 'X', 'Y', 'Z'}
+
 
     #Check for illegal input immediately
     for c in skus:
@@ -87,4 +90,5 @@ def checkout(skus: str) -> int:
 
     return total_price #return final checkout total
     
+
 
