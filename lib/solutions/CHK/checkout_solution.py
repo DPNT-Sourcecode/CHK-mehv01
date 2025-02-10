@@ -61,7 +61,6 @@ def checkout(skus: str) -> int:
         ({'S', 'T', 'X', 'Y', 'Z'}, 3, 45)
     ]
 
-
     #Check for illegal input immediately
     for c in skus:
         if c not in prices:
@@ -79,8 +78,18 @@ def checkout(skus: str) -> int:
             if free_item in item_counts:
                 #...reduce its count based on triggered offer
                 item_counts[free_item] = max(0, item_counts[free_item] - num_offers_triggered)
+    
+    #2: Apply group discount here:
+    for group_items, num_required, discounted_price in group_discount_items:
+        group_list = []
+        for item in group_items:
+            if item in item_counts:
+                #for each eligible item... add each occurence
+                group_list.extend([item] * item_counts[item])
+        
+        print(group_list)
 
-    #2: Process bulk discount, applying special offers first (favouring best discount)
+    #3: Process bulk discount, applying special offers first (favouring best discount)
     for item, count in item_counts.items():
         if item in special_offers:
             #sort by best discount first
