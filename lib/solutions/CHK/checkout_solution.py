@@ -15,8 +15,11 @@ def checkout(skus: str) -> int:
     #dict for offers: item -> (num required, discounted price)
     special_offers = {
         'A': [(5,200), (3, 130)],
-        'B': [(2, 45)],
-        'E': [(2, 'E')]
+        'B': [(2, 45)]
+    }
+
+    buy_get_free_offers = {
+        'E': (2, 'B')
     }
 
     #Check for illegal input immediately
@@ -27,7 +30,12 @@ def checkout(skus: str) -> int:
     item_counts = Counter(skus) #count number of SKUs using Counter lib
     total_price = 0
 
-    #process total amount, applying special offers first
+    #1: Apply 'Buy X get Y free' offer
+    for item, offers in special_offers.items():
+        for offer in offers:
+            if 
+
+    #2: Process bulk discount, applying special offers first (favouring best discount)
     for item, count in item_counts.items():
         if item in special_offers:
             num_required, discounted_price = special_offers[item]
@@ -40,3 +48,4 @@ def checkout(skus: str) -> int:
     return total_price
             
     
+
