@@ -20,6 +20,9 @@ class TestCHK():
     def test_chk_bbaaabbc(self):
         assert checkout_solution.checkout('BBAAABBC') == 240
 
+    def test_chk_eeb(self):
+        assert checkout_solution.checkout('EEB') == 80
+    
     def test_chk_eebb(self):
         assert checkout_solution.checkout('EEBB') == 110
 
@@ -27,3 +30,4 @@ class TestCHK():
         assert checkout_solution.checkout('Z') == -1
 
     
+
