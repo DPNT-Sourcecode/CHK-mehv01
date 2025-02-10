@@ -9,7 +9,8 @@ def checkout(skus: str) -> int:
         'B': 30,
         'C': 20,
         'D': 15,
-        'E': 40
+        'E': 40,
+        'F': 10
     }
 
     #dict for offers: item -> (num required, discounted price)
@@ -19,7 +20,8 @@ def checkout(skus: str) -> int:
     }
 
     buy_get_free_offers = {
-        'E': (2, 'B')
+        'E': (2, 'B'),
+        'F': (2, 'F')
     }
 
     #Check for illegal input immediately
@@ -33,7 +35,7 @@ def checkout(skus: str) -> int:
 
     #1: Apply 'Buy X get Y free' offer
     for item, (num_required, free_item) in buy_get_free_offers.items():
-        if item in item_counts:
+        if item in item_counts: 
             num_offers_triggered = item_counts[item] // num_required
             if free_item in item_counts:
                 #reduce amount of items charged for
