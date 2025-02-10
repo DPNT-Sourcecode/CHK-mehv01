@@ -2,6 +2,10 @@ from solutions.CHK import checkout_solution
 
 
 class TestCHK():
+    #CHK_R1
+    def test_chk_err(self):
+        assert checkout_solution.checkout('Z') == -1
+
     def test_chk_3a(self):
         assert checkout_solution.checkout('AAA') == 130
     
@@ -20,9 +24,10 @@ class TestCHK():
     def test_chk_bbaaabbc(self):
         assert checkout_solution.checkout('BBAAABBC') == 240
 
+    #CHK_R2
     def test_chk_abcde(self):
         assert checkout_solution.checkout('ABCDE') == 155
-
+    
     def test_chk_eb(self):
         assert checkout_solution.checkout('EB') == 70
 
@@ -35,11 +40,21 @@ class TestCHK():
     def test_chk_bbeebb(self):
         assert checkout_solution.checkout('BBEEBB') == 155
 
-    def test_chk_err(self):
-        assert checkout_solution.checkout('Z') == -1
-
     def test_chk_EEEEBB(self):
         assert checkout_solution.checkout('EEEEBB') == 160
         
-
+    #CHK_R3
+    def test_chk_F(self):
+        assert checkout_solution.checkout('F') == 10
     
+    def test_chk_FF(self):
+        assert checkout_solution.checkout('FF') == 20
+    
+    def test_chk_FFF(self):
+        assert checkout_solution.checkout('FFF') == 20
+    
+    def test_chk_FFFFFF(self):
+        assert checkout_solution.checkout('FFFFFF') == 40
+    
+    def test_chk_ABCDEFF(self):
+        assert checkout_solution.checkout('ABCDEFF') == 175
