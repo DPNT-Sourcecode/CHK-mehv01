@@ -32,16 +32,17 @@ def checkout(skus: str) -> int:
         if c not in prices:
             return -1 #invalid SKU found, return
     
-    #Count number of SKUs using Counter lib
+    #Count number of each SKU using Counter lib
     item_counts = Counter(skus)
     total_price = 0
 
-    #1: Apply 'Buy X get Y free' offer
+    #1: Apply 'Buy X get Y free' offers
     for item, (num_required, free_item) in buy_get_free_offers.items():
         if item in item_counts: 
             num_offers_triggered = item_counts[item] // num_required
+            #If the free item exists...
             if free_item in item_counts:
-                #reduce amount of items charged for
+                #...reduce its count based on triggered offer
                 item_counts[free_item] = max(0, item_counts[free_item] - num_offers_triggered)
 
     #2: Process bulk discount, applying special offers first (favouring best discount)
@@ -49,11 +50,13 @@ def checkout(skus: str) -> int:
         if item in special_offers:
             #sort by best discount first
             for quantity, price in sorted(special_offers[item], reverse=True):
+                #Loop to apply as many discounts as possible
                 while count >= quantity:
                     total_price += price
                     count -= quantity
-        total_price += count * prices[item]
 
-    return total_price
+        total_price += count * prices[item] #Add any leftover items at regular price
+
+    return total_price #return final checkout total
     
 
