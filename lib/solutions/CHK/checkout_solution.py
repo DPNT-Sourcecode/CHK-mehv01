@@ -8,15 +8,18 @@ def checkout(skus: str) -> int:
         'A': 50,
         'B': 30,
         'C': 20,
-        'D': 15
+        'D': 15,
+        'E': 40
     }
 
     #dict for offers: item -> (num required, discounted price)
     special_offers = {
-        'A': (3, 130),
-        'B': (2, 45)
+        'A': [(5,200), (3, 130)],
+        'B': [(2, 45)],
+        'E': [(2, 'E')]
     }
 
+    #Check for illegal input immediately
     for c in skus:
         if c not in prices:
             return -1
@@ -37,7 +40,3 @@ def checkout(skus: str) -> int:
     return total_price
             
     
-
-
-
-

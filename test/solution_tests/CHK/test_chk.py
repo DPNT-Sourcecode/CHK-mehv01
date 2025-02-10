@@ -21,4 +21,3 @@ class TestCHK():
         assert checkout_solution.checkout('Z') == -1
 
     
-
