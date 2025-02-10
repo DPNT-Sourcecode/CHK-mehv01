@@ -38,8 +38,8 @@ class TestCHK():
     def test_chk_err(self):
         assert checkout_solution.checkout('Z') == -1
 
+    def test_chk_EEEEBB(self):
+        assert checkout_solution.checkout('EEEEBB') == 160
+        
+
     
-
-
-
-
