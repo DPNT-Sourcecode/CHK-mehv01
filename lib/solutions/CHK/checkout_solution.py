@@ -38,11 +38,13 @@ def checkout(skus: str) -> int:
     special_offers = {
         'A': [(5, 200), (3, 130)],
         'B': [(2, 45)],
-        'F': [(3, 20)], #Buy 3F for 20 is same as buy 2F get one free
+        'F': [(3, 2*prices['F'])], #Buy 3F for 20 is same as buy 2F get one free
         'H': [(10, 80), (5, 45)],
         'K': [(2, 150)],
         'P': [(5, 200)],
-        'Q': [(3, 80)]
+        'Q': [(3, 80)],
+        'U': [(4, 3*prices['U'])],
+        'V': [(3, 130), (2, 90)]
     }
 
     #Buy X, get Y free offers

@@ -4,7 +4,7 @@ from solutions.CHK import checkout_solution
 class TestCHK():
     #CHK_R1
     def test_chk_err(self):
-        assert checkout_solution.checkout('Z') == -1
+        assert checkout_solution.checkout('z') == -1
 
     def test_chk_3a(self):
         assert checkout_solution.checkout('AAA') == 130
@@ -58,3 +58,16 @@ class TestCHK():
     
     def test_chk_ABCDEFF(self):
         assert checkout_solution.checkout('ABCDEFF') == 175
+
+    #CHK_R4
+    def test_chk_P(self):
+        assert checkout_solution.checkout('P') == 50
+
+    def test_chk_PPPPP(self):
+        assert checkout_solution.checkout('PPPPP') == 200
+
+    def test_chk_UUU(self):
+        assert checkout_solution.checkout('UUU') == 120
+    
+    def test_chk_UUUU(self):
+        assert checkout_solution.checkout('UUUU') == 120
