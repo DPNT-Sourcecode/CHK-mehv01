@@ -78,23 +78,24 @@ def checkout(skus: str) -> int:
             if free_item in item_counts:
                 #...reduce its count based on triggered offer
                 item_counts[free_item] = max(0, item_counts[free_item] - num_offers_triggered)
-        
-        #now we want to only reduce the highest priced items first!
-        group_list.sort(key=lambda x: prices[x], reverse=True)
-
-        print(group_list)
-
 
     #2: Apply group discount here:
     for group_items, num_required, discounted_price in group_discount_items:
         group_list = []
-        print(group_list)
         for item in group_items:
             if item in item_counts:
                 #for each eligible item... add each occurence
                 group_list.extend([item] * item_counts[item])
         
-        print(group_list)
+        #Now we want to only reduce the highest priced items first!
+        group_list.sort(key=lambda x: prices[x], reverse=True)
+
+        #Apply as many group discounts as possible, starting with highest priced item
+        while len(group_list) >= num_required:
+            total_price += discounted_price
+            #remove the first N items (i.e. the N most expensive)
+            for _ in range(num_required):
+                group_list.pop(0)
 
     #3: Process bulk discount, applying special offers first (favouring best discount)
     for item, count in item_counts.items():
