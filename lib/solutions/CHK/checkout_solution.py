@@ -3,7 +3,7 @@ from collections import Counter
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus: str) -> int:
-    #dict for price table
+    #Price table for individual items
     prices = {
         'A': 50,
         'B': 30,
@@ -13,21 +13,24 @@ def checkout(skus: str) -> int:
         'F': 10
     }
 
-    #dict for offers: item -> (num required, discounted price)
+    #Special bulk discounts
+    #item -> (num required, discounted price)
     special_offers = {
-        'A': [(5,200), (3, 130)],
-        'B': [(2, 45)]
+        'A': [(5, 200), (3, 130)],
+        'B': [(2, 45)],
+        'F': [(3, 20)] #Buy 3F for 20 is same as buy 2F get one free
     }
 
+    #Buy X, get Y free offers
+    #item -> (num required, free item)
     buy_get_free_offers = {
-        'E': (2, 'B'),
-        'F': (2, 'F')
+        'E': (2, 'B')
     }
 
     #Check for illegal input immediately
     for c in skus:
         if c not in prices:
-            return -1
+            return -1 #invalid SKU found, return
     
     #Count number of SKUs using Counter lib
     item_counts = Counter(skus)
@@ -53,3 +56,4 @@ def checkout(skus: str) -> int:
 
     return total_price
     
+
