@@ -25,10 +25,15 @@ def checkout(skus: str) -> int:
     total_price = 0
 
     for item, count in item_counts.items():
-        print(item, count)
-        # if item in special_offers:
+        if item in special_offers:
+            num_required, discounted_price = special_offers[item]
+            offer_applied = count // num_required
+            remaining = count % num_required
+            total_price += (offer_applied * discounted_price) + (remaining * prices[item])
+        else:
+            total_price += count * prices[item]
 
-    return item_counts.items()
+    return total_price
             
     
 
