@@ -55,7 +55,11 @@ def checkout(skus: str) -> int:
         'R': (3, 'Q')
     }
 
-    group_discount_items = {'S', 'T', 'X', 'Y', 'Z'}
+    #List of group discounts
+    #item contains: ({set of items}, num of items required to trigger, discounted price)
+    group_discount_items = [
+        ({'S', 'T', 'X', 'Y', 'Z'}, 3, 45)
+    ]
 
 
     #Check for illegal input immediately
@@ -90,5 +94,6 @@ def checkout(skus: str) -> int:
 
     return total_price #return final checkout total
     
+
 
 
