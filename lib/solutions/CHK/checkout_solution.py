@@ -27,11 +27,12 @@ def checkout(skus: str) -> int:
         if c not in prices:
             return -1
     
-    item_counts = Counter(skus) #count number of SKUs using Counter lib
+    #Count number of SKUs using Counter lib
+    item_counts = Counter(skus)
     total_price = 0
 
     #1: Apply 'Buy X get Y free' offer
-    for item, offers in special_offers.items():
+    for item, (num_required, free_item) in buy_get_free_offers.items():
         for offer in offers:
             if 
 
@@ -48,4 +49,5 @@ def checkout(skus: str) -> int:
     return total_price
             
     
+
 
