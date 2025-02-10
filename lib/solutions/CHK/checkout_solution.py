@@ -21,9 +21,10 @@ def checkout(skus: str) -> int:
         if c not in prices:
             return -1
     
-    item_counts = Counter(skus)
+    item_counts = Counter(skus) #count number of SKUs using Counter lib
     total_price = 0
 
+    #process total amount, applying special offers first
     for item, count in item_counts.items():
         if item in special_offers:
             num_required, discounted_price = special_offers[item]
@@ -36,6 +37,7 @@ def checkout(skus: str) -> int:
     return total_price
             
     
+
 
 
 
