@@ -73,5 +73,8 @@ class TestCHK():
         assert checkout_solution.checkout('UUUU') == 120
 
     #CHK_R5
-    def test_chk_STXXXZ(self):
-        assert checkout_solution.checkout('STXXXZ') == 45
+    def test_chk_STX(self):
+        assert checkout_solution.checkout('STX') == 45
+
+    def test_chk_STXX(self):
+        assert checkout_solution.checkout('STXX') == 62

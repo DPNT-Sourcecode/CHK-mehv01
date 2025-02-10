@@ -95,7 +95,12 @@ def checkout(skus: str) -> int:
             total_price += discounted_price
             #remove the first N items (i.e. the N most expensive)
             for _ in range(num_required):
-                group_list.pop(0)
+                removed_item = group_list.pop(0)
+                item_counts[removed_item] -= 1
+        
+        #Finally, any items which remain should be added back to items_count list
+        for item in group_list:
+            item_counts[item] += 1
 
     #3: Process bulk discount, applying special offers first (favouring best discount)
     for item, count in item_counts.items():
