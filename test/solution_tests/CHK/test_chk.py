@@ -6,16 +6,22 @@ class TestCHK():
         assert checkout_solution.checkout('AAA') == 130
     
     def test_chk_6a(self):
-        assert checkout_solution.checkout('AAAAAA') == 260
+        assert checkout_solution.checkout('AAAAAA') == 250
     
     def test_chk_5a(self):
-        assert checkout_solution.checkout('AAAAA') == 230
+        assert checkout_solution.checkout('AAAAA') == 200
+
+    def test_chk_8a(self):
+        assert checkout_solution.checkout('AAAAAAAA') == 330
     
     def test_chk_abcd(self):
         assert checkout_solution.checkout('ABCD') == 115
     
     def test_chk_bbaaabbc(self):
         assert checkout_solution.checkout('BBAAABBC') == 240
+
+    def test_chk_eebb(self):
+        assert checkout_solution.checkout('EEBB') == 110
 
     def test_chk_err(self):
         assert checkout_solution.checkout('Z') == -1

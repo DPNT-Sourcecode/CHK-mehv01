@@ -36,21 +36,22 @@ def checkout(skus: str) -> int:
         if item in item_counts:
             free_items_given = item_counts[item]
             if free_item in item_counts:
+                #reduce amount of items charged for
                 item_counts[free_item] = max(0, item_counts[free_item] - free_items_given)
 
     #2: Process bulk discount, applying special offers first (favouring best discount)
     for item, count in item_counts.items():
         if item in special_offers:
-            num_required, discounted_price = special_offers[item]
-            offer_applied = count // num_required
-            remaining = count % num_required
-            total_price += (offer_applied * discounted_price) + (remaining * prices[item])
-        else:
-            total_price += count * prices[item]
+            #sort by best discount first
+            for quantity, price in sorted(special_offers[item], reverse=True):
+                while count >= quantity:
+                    total_price += price
+                    count -= quantity
+        total_price += count * prices[item]
 
     return total_price
             
-    
+
 
 
 
