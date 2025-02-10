@@ -33,7 +33,7 @@ def checkout(skus: str) -> int:
         'Z': 21
     }
 
-    #Special bulk discounts
+    #Data struct for Special bulk discounts
     #item -> (num required, discounted price)
     special_offers = {
         'A': [(5, 200), (3, 130)],
@@ -47,7 +47,7 @@ def checkout(skus: str) -> int:
         'V': [(3, 130), (2, 90)]
     }
 
-    #Buy X, get Y free offers
+    #Data struct for 'Buy X, get Y free' offers
     #item -> (num required, free item)
     buy_get_free_offers = {
         'E': (2, 'B'),
@@ -55,7 +55,7 @@ def checkout(skus: str) -> int:
         'R': (3, 'Q')
     }
 
-    #List of group discounts
+    #Data struct for list of group discounts
     #item contains: ({set of items}, num of items required to trigger, discounted price)
     group_discount_items = [
         ({'S', 'T', 'X', 'Y', 'Z'}, 3, 45)

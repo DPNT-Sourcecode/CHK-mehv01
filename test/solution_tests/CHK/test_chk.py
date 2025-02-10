@@ -78,3 +78,12 @@ class TestCHK():
 
     def test_chk_STXX(self):
         assert checkout_solution.checkout('STXX') == 62
+    
+    def test_chk_STXYZ(self):
+        assert checkout_solution.checkout('STXYZ') == 82
+
+    def test_chk_ZZZZ(self):
+        assert checkout_solution.checkout('ZZZZ') == 66
+
+    def test_chk_ZZZX(self):
+        assert checkout_solution.checkout('ZZZX') == 62
